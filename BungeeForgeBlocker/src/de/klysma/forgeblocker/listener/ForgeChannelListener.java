@@ -14,7 +14,7 @@ public class ForgeChannelListener implements Listener {
 
     @EventHandler
     public void onMessageRecieve(PluginMessageEvent event){
-        if(event.getTag().equals("FML|HS")){
+        if(event.getTag().equals("fml:handshake")){
             ModData modData = ModData.getModData(event.getData());
 
             Map<String, String> mods = modData.getMods();

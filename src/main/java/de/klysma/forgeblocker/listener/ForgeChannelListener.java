@@ -14,6 +14,7 @@ public class ForgeChannelListener implements Listener {
 
     @EventHandler
     public void onMessageRecieve(PluginMessageEvent event){
+        ProxyServer.getInstance().getLogger().info("######################### EVENT:->"+event.getTag());
         if(event.getTag().equals("fml:handshake")){
             ModData modData = ModData.getModData(event.getData());
 

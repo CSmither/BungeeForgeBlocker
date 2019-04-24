@@ -1,0 +1,5 @@
+name: BungeeForgeBlocker
+author: Klysma
+version: 2.0
+
+main: de.klysma.forgeblocker.Main

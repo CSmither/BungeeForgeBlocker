@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id "com.github.johnrengelman.shadow" version "2.0.4"
+}
+
+group 'de.klysma.forgeblocker'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+repositories {
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
+dependencies {
+    compileOnly('net.md-5:bungeecord-api:1.14-SNAPSHOT')
+    compileOnly 'org.projectlombok:lombok:1.16.2'
+}

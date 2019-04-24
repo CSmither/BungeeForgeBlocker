@@ -1,7 +1,7 @@
 package de.klysma.forgeblocker.listener;
 
 import de.klysma.forgeblocker.Main;
-import net.md_5.bungee.BungeeCord;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.plugin.Listener;
@@ -15,13 +15,10 @@ public class PostLoginListener implements Listener {
     public void onJoin(PostLoginEvent event){
         ProxiedPlayer proxiedPlayer = event.getPlayer();
 
-            BungeeCord.getInstance().getScheduler().schedule(Main.plugin, new Runnable() {
-                @Override
-                public void run() {
-                    proxiedPlayer.sendData("fml:handshake", new byte[]{-2, 0});
-                    proxiedPlayer.sendData("fml:handshake", new byte[]{0, 2, 0, 0, 0, 0});
-                    proxiedPlayer.sendData("fml:handshake", new byte[]{2, 0, 0, 0, 0});
-                }
+            ProxyServer.getInstance().getScheduler().schedule(Main.plugin, () -> {
+                proxiedPlayer.sendData("fml:handshake", new byte[]{-2, 0});
+                proxiedPlayer.sendData("fml:handshake", new byte[]{0, 2, 0, 0, 0, 0});
+                proxiedPlayer.sendData("fml:handshake", new byte[]{2, 0, 0, 0, 0});
             }, 2, TimeUnit.SECONDS);
     }
 }

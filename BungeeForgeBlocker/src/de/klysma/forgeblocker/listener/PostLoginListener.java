@@ -18,9 +18,9 @@ public class PostLoginListener implements Listener {
             BungeeCord.getInstance().getScheduler().schedule(Main.plugin, new Runnable() {
                 @Override
                 public void run() {
-                    proxiedPlayer.sendData("FML|HS", new byte[]{-2, 0});
-                    proxiedPlayer.sendData("FML|HS", new byte[]{0, 2, 0, 0, 0, 0});
-                    proxiedPlayer.sendData("FML|HS", new byte[]{2, 0, 0, 0, 0});
+                    proxiedPlayer.sendData("fml:handshake", new byte[]{-2, 0});
+                    proxiedPlayer.sendData("fml:handshake", new byte[]{0, 2, 0, 0, 0, 0});
+                    proxiedPlayer.sendData("fml:handshake", new byte[]{2, 0, 0, 0, 0});
                 }
             }, 2, TimeUnit.SECONDS);
     }
